@@ -1,0 +1,496 @@
+Step 1: Project Setup
+Create a folder named assignment-8.5 on your computer. Inside it, create two files:
+
+index.html
+
+styles.css
+
+Step 2: HTML File (index.html)
+Copy and paste the following code into index.html:
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 8.5 - CSS Grid Photo Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Site Layout wrapper using Named Grid Areas -->
+  <div class="page-container">
+
+    <!-- Header Section -->
+    <header class="site-header">
+      <div class="logo">LensGrid Gallery</div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#footer">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Sidebar Section -->
+    <aside class="site-sidebar">
+      <h3>Categories</h3>
+      <ul class="category-list">
+        <li><a href="#" class="active">All Photos</a></li>
+        <li><a href="#">Nature</a></li>
+        <li><a href="#">Architecture</a></li>
+        <li><a href="#">Portraits</a></li>
+        <li><a href="#">Abstract</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="site-main" id="gallery">
+      <div class="gallery-header">
+        <h1>Featured Photography</h1>
+        <p>A responsive layout powered by modern CSS Grid techniques.</p>
+      </div>
+
+      <!-- Main Photo Grid (Demonstrating grid-template-columns, minmax, repeat, fr) -->
+      <section class="photo-grid">
+        
+        <!-- Featured Wide Card (Explicit Grid Span) -->
+        <article class="card card-wide">
+          <img src="https://picsum.photos/id/1015/800/600" alt="Mountain valley lake" />
+          <div class="card-content">
+            <span class="tag">Featured</span>
+            <h2>Alpine Horizon</h2>
+            <p>A panoramic view across serene glacier waters and towering peaks.</p>
+          </div>
+        </article>
+
+        <!-- Standard Grid Cards -->
+        <article class="card">
+          <img src="https://picsum.photos/id/1018/600/600" alt="Misty forest" />
+          <div class="card-content">
+            <span class="tag">Nature</span>
+            <h2>Mist & Pines</h2>
+            <p>Dense morning fog weaving through ancient evergreen canopy.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://picsum.photos/id/1025/600/600" alt="Pug wrapped in blanket" />
+          <div class="card-content">
+            <span class="tag">Portraits</span>
+            <h2>Cozy Companions</h2>
+            <p>Capturing quiet, warm moments on cold outdoor afternoons.</p>
+          </div>
+        </article>
+
+        <!-- Featured Tall Card (Explicit Grid Span) -->
+        <article class="card card-tall">
+          <img src="https://picsum.photos/id/1040/600/800" alt="Modern architecture skyscraper" />
+          <div class="card-content">
+            <span class="tag">Architecture</span>
+            <h2>Monolithic Lines</h2>
+            <p>Glass and steel reflecting dramatic skyward angles in the downtown hub.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://picsum.photos/id/1062/600/600" alt="Dog running on beach" />
+          <div class="card-content">
+            <span class="tag">Action</span>
+            <h2>Coastal Sprint</h2>
+            <p>High energy motion frozen against the glowing ocean sunset.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://picsum.photos/id/1069/600/600" alt="Jellyfish swimming" />
+          <div class="card-content">
+            <span class="tag">Abstract</span>
+            <h2>Bioluminescence</h2>
+            <p>Ethereal deep-sea creatures glowing soft neon against black depths.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://picsum.photos/id/1084/600/600" alt="Walrus on ice" />
+          <div class="card-content">
+            <span class="tag">Wildlife</span>
+            <h2>Arctic Solitude</h2>
+            <p>Resting on drifting ice floes under the arctic northern sky.</p>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer" id="footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>LensGrid</h4>
+          <p>Assignment 8.5 CSS Grid Mini-Project demonstrating layout mastery.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Project</a></li>
+            <li><a href="#">Grid Docs</a></li>
+            <li><a href="#">Source Code</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Portfolio</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LensGrid Gallery. Built with CSS Grid.</p>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
+Step 3: CSS File (styles.css)
+Copy and paste the following code into styles.css:
+
+CSS
+/* ==========================================
+   RESET & BASE STYLES (Preventing overflow)
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: #333333;
+  background-color: #f4f6f9;
+}
+
+/* Rule 4: Prevent image overflow */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ==========================================
+   RULE 3: NAMED GRID AREAS FOR PAGE LAYOUT
+   ========================================== */
+.page-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 240px 1fr;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+}
+
+/* Assigning Elements to Grid Areas */
+.site-header  { grid-area: header; }
+.site-sidebar { grid-area: sidebar; }
+.site-main    { grid-area: main; }
+.site-footer  { grid-area: footer; }
+
+/* ==========================================
+   HEADER & SIDEBAR STYLES
+   ========================================== */
+.site-header {
+  background-color: #1e293b;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.site-header .logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.site-header .nav-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.site-header .nav-links a:hover {
+  color: #ffffff;
+}
+
+.site-sidebar {
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  padding: 2rem 1.5rem;
+}
+
+.site-sidebar h3 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.category-list {
+  list-style: none;
+}
+
+.category-list li {
+  margin-bottom: 0.5rem;
+}
+
+.category-list a {
+  text-decoration: none;
+  color: #334155;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.category-list a:hover,
+.category-list a.active {
+  background-color: #f1f5f9;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* ==========================================
+   MAIN SECTION & GALLERY GRID
+   RULE 1 & 2: repeat(), minmax(), fr units, consistent gaps
+   ========================================== */
+.site-main {
+  padding: 2rem;
+  /* Rule 4: Prevent text/content overflow */
+  min-width: 0; 
+}
+
+.gallery-header {
+  margin-bottom: 2rem;
+}
+
+.gallery-header h1 {
+  font-size: 2rem;
+  color: #0f172a;
+}
+
+.gallery-header p {
+  color: #64748b;
+}
+
+/* Main Photo Grid */
+.photo-grid {
+  display: grid;
+  /* Responsive grid using repeat(), minmax(), and fr units */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 220px;
+  /* Consistent grid gap */
+  gap: 1.5rem; 
+}
+
+/* Card Container Styles */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden; /* Prevent child image/text overflow */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  flex-grow: 1;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+  color: #ffffff;
+  /* Prevent long unspaced text overflow */
+  word-break: break-word; 
+}
+
+.card-content h2 {
+  font-size: 1.1rem;
+  margin: 0.25rem 0;
+}
+
+.card-content p {
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  line-height: 1.3;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Rule 3: Explicit Grid Placement / Spanning */
+.card-wide {
+  grid-column: span 2;
+}
+
+.card-tall {
+  grid-row: span 2;
+}
+
+/* ==========================================
+   FOOTER SECTION (Secondary CSS Grid)
+   ========================================== */
+.site-footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 3rem 2rem 1.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #1e293b;
+  font-size: 0.875rem;
+}
+
+/* ==========================================
+   RULE 5: RESPONSIVE BREAKPOINTS (Screen Testing)
+   ========================================== */
+@media (max-width: 900px) {
+  /* Change area layout for tablet screens */
+  .page-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+  }
+
+  .site-sidebar {
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 2rem;
+  }
+
+  .category-list {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+  }
+
+  .category-list a {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-main {
+    padding: 1rem;
+  }
+
+  /* Collapse explicit spans on small mobile screens to prevent overflow */
+  .card-wide,
+  .card-tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+Step 4: Verify Checklist Rules
+Requirement	Implementation Detail
+1. Primary Layout with CSS Grid	.page-container and .photo-grid both use display: grid.
+2. repeat(), minmax(), fr & gaps	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); with gap: 1.5rem;.
+3. Named areas & Explicit placement	grid-template-areas used in .page-container; .card-wide and .card-tall use grid-column: span 2 & grid-row: span 2.
+4. Prevent overflow	max-width: 100%, object-fit: cover on images; overflow: hidden, word-break: break-word, and min-width: 0 on grid items.
+5. Responsive test	Media queries at 900px and 600px reorganize the grid layout for mobile/tablet.
+Step 5: Push to GitHub & Submit
+Initialize git and commit:
+
+Bash
+git init
+git add .
+git commit -m "Complete Assignment 8.5 CSS Grid Mini-Project"
+Create a repository on GitHub named assignment-8.5-css-grid.
+
+Link your local repo and push:
+
+Bash
+git remote add origin https://github.com/YOUR-USERNAME/assignment-8.5-css-grid.git
+git branch -M main
+git push -u origin main
+Optional: Turn on GitHub Pages in your GitHub repository settings under Settings > Pages to get a live deployment link.
+
+Submit your HTML file, CSS file, and GitHub link for grading.
